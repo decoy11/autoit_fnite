@@ -1,0 +1,59 @@
+HotKeySet("{F9}", "kill")
+HotKeySet("{F8}", "onoff")
+HotKeySet("{F10}", "wherepoint")
+
+$a=0
+
+$craftx=0
+$crafty=0
+
+$trapx=0
+$trapy=0
+
+$disassemblex=0
+$disassembley=0
+
+Func kill()
+   Exit 0
+EndFunc
+
+
+Func wherepoint()
+$craftx=InputBox("craft", "where is the craft button x try 1050", "")
+$crafty=InputBox("craft", "where is the craft button y try 330-420", "")
+
+$trapx=InputBox("trap", "where is the traps x try 150", "")
+$trapy=InputBox("trap", "where is the traps y try 420", "")
+	 
+$disassemblex=InputBox("disassemble", "where is the disassemble x try 150", "")
+$disassembley=InputBox("disassemble", "where is the disassemble y try 750", "")
+	   
+EndFunc
+
+Func onoff()
+   if $a==1 Then
+	  $a=0
+   ElseIf $a==0 Then
+	  $a=1
+   endif	
+	
+EndFunc
+
+
+
+MsgBox(0, "Title", "F9 TO KILL SCRIPT F8 to turn on and off F10 to pick places")
+
+While 1;loop forever
+   if $a==1 Then
+Sleep(500)
+MouseMove($craftx, $crafty, 1)
+MouseClick ( "left" )
+MouseMove($trapx, $trapy, 1)
+MouseClick ( "left" )
+Sleep(50)
+MouseMove($disassemblex, $disassembley, 1)
+MouseClick ( "left" )
+
+   EndIf
+
+WEnd
