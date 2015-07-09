@@ -1,0 +1,103 @@
+HotKeySet("{F9}", "kill")
+HotKeySet("{F8}", "onoff")
+HotKeySet("{F10}", "wherepoint")
+HotKeySet("{NUMPAD7}", "mcraft")
+HotKeySet("{NUMPAD8}", "mtrap")
+HotKeySet("{NUMPAD9}", "mdis")
+HotKeySet("x", "click")
+
+Func kill()
+   Exit 0
+EndFunc
+
+$a=0
+$b=0
+
+$craftx=1050
+$crafty=320
+
+$trapx=150
+$trapy=420
+
+$disassemblex=150
+$disassembley=750
+
+Func mcraft()
+$craftx=InputBox("craft", "where is the craft button x left to right", $craftx)
+$crafty=InputBox("craft", "where is the craft button y  up to down", $crafty)
+MouseMove($craftx, $crafty, 1)
+EndFunc
+
+Func mtrap()
+$trapx=InputBox("trap", "where is the traps x left to right", $trapx)
+$trapy=InputBox("trap", "where is the traps y  up to down", $trapy)
+MouseMove($trapx, $trapy, 1)
+EndFunc
+
+Func mdis()
+$disassemblex=InputBox("disassemble", "where is the disassemble x left to right", $disassemblex)
+$disassembley=InputBox("disassemble", "where is the disassemble y  up to down", $disassembley)
+MouseMove($disassemblex, $disassembley, 1)
+EndFunc
+
+
+
+
+Func wherepoint()
+$craftx=InputBox("craft", "where is the craft button x left to right", $craftx)
+$crafty=InputBox("craft", "where is the craft button y  up to down", $crafty)
+
+$trapx=InputBox("trap", "where is the traps x left to right", $trapx)
+$trapy=InputBox("trap", "where is the traps y  up to down", $trapy)
+	 
+$disassemblex=InputBox("disassemble", "where is the disassemble x left to right", $disassemblex)
+$disassembley=InputBox("disassemble", "where is the disassemble y  up to down", $disassembley)
+	   
+EndFunc
+
+Func onoff()
+   if $a==1 Then
+	  $a=0
+   ElseIf $a==0 Then
+	  $a=1
+   endif	
+	
+EndFunc
+
+Func click()
+   if $b==1 Then
+	  $b=0
+	  MouseUp  ( "middle" )
+	  Sleep(50)
+ElseIf $b==0 Then
+	  $b=1
+	   MouseDown  ( "middle" )
+	   Sleep(50)
+
+   endif	
+	
+EndFunc
+
+
+
+MsgBox(0, "Title", "F9 TO KILL SCRIPT F8 to turn on and off F10 to pick places craft=num7 trap=num8 dis=num9 x=run and click")
+
+While 1;loop forever
+   if $a==1 Then
+Sleep(500)
+MouseMove($craftx, $crafty, 1)
+MouseClick ( "left" )
+MouseMove($trapx, $trapy, 1)
+MouseClick ( "left" )
+Sleep(50)
+MouseMove($disassemblex, $disassembley, 1)
+MouseClick ( "left" )
+   EndIf
+   
+      if $b==1 Then
+   MouseClick ( "left" )      
+   sleep(20)
+   EndIf
+
+
+WEnd
